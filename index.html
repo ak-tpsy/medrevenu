@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="posted.png" />
+    <title>MR QC CRE </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+    <style>
+      #upload-status {
+      font-size: 2em; /* 2 times the current font size */
+      font-weight: bold;
+      }
+      body {
+        font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .logo {
+        display: block;
+        margin: 30px auto;
+        width: 50%;
+      }
+      .notes {
+        text-align: center;
+        font-size: 16px;
+        line-height: 1.5;
+        padding: 20px 0;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+      .input-container {
+        margin-bottom: 15px;
+      }
+      .input-container label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input[type="file"],
+      input[type="text"] {
+        width: 100%;
+      }
+      button {
+        width: 100%;
+        background-color: #30aabc;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #258fa3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="logo.png" alt="Customer Logo" class="logo" />
+
+      <div class="notes">
+        <p>
+          <b>
+            Please provide the required files and passcode to proceed with the
+            upload. Note that you can upload either uncorrected claims or both
+            types of claims. If you supply both claims, the application will also
+            calculate the accuracy of the rule engine. The processing may take up
+            to 15 minutes. Check back on this page for the download link.
+          </b>
+        </p>
+      </div>
+
+      <div class="input-container">
+        <label for="uncorrectedClaims">Uncorrected Claims:</label>
+        <input type="file" id="uncorrectedClaims" accept=".xls,.xlsx,.csv" />
+      </div>
+
+      <div class="input-container">
+        <label for="correctedClaims">
+          Corrected Claims (Only submit test accuracy):
+        </label>
+        <input type="file" id="correctedClaims" accept=".xls,.xlsx,.csv" />
+      </div>
+
+      <div class="input-container">
+        <label for="passcode">Passcode:</label>
+        <input type="password" id="passcode" />
+      </div>
+      <div id="error-message" style="color: red; text-align: center;"></div> <!-- Add this line -->
+      <div class="input-container">
+        <button id="uploadButton">Upload</button>
+      </div>
+      <div class="input-container">
+        <p id="upload-status"></p>
+      </div>
+      <div id="processed-file-container"></div>
+    </div>
+    
+
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.813.0.min.js"></script>
+    <script src="app.js"></script>
+  </body>
